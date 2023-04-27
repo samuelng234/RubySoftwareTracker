@@ -16,9 +16,9 @@
   <p>
     <%= form.submit %>
     <% if user.id.nil? %>
-      <%= button_to "Cancel", users_path, :method => :get %>
+      <%= link_to "Cancel", users_path %>
     <% else %>
-      <%= button_to "Cancel", user_path(id: user.id) %>
+      <%= link_to "Cancel", user_path(id: user.id) %>
     <% end %>
   </p>
 <% end %>

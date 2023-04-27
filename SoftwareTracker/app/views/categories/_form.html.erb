@@ -8,6 +8,10 @@
   </div>
   <p>
     <%= form.submit %>
-    <%= button_to "Cancel", category_path(id: category.id) %>
+    <% if category.id.nil? %>
+      <%= link_to "Cancel", categories_path %>
+    <% else %>
+      <%= link_to "Cancel", category_path(id: category.id) %>
+    <% end %>
   </p>
 <% end %>

@@ -9,6 +9,10 @@
   </div>
   <p>
     <%= form.submit %>
-    <%= button_to "Cancel", tool_path(id: tool.id) %>
+    <% if tool.id.nil? %>
+      <%= link_to "Cancel", tools_path %>
+    <% else %>
+      <%= link_to "Cancel", tool_path(id: tool.id) %>
+    <% end %>
   </p>
 <% end %>
