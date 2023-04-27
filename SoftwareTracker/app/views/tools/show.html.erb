@@ -1,0 +1,7 @@
+<h1><%= @tool.name %></h1>
+<h2>Category</h2>
+<% unless @tool.category.nil? %>
+  <p><%= @tool.category.name %></p>
+<% end %>
+
+<%= link_to "Edit Tool Details", edit_tool_path %>

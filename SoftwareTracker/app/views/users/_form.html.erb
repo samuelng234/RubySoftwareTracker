@@ -1,0 +1,24 @@
+<%= form_with model: user do |form| %>
+  <div>
+    <%= form.label "First name" %><br>
+    <%= form.text_field :firstname %>
+    <% user.errors.full_messages_for(:firstname).each do |messages| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label "Last name" %><br>
+    <%= form.text_field :lastname %>
+    <% user.errors.full_messages_for(:lastname).each do |messages| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <p>
+    <%= form.submit %>
+    <% if user.id.nil? %>
+      <%= button_to "Cancel", users_path, :method => :get %>
+    <% else %>
+      <%= button_to "Cancel", user_path(id: user.id) %>
+    <% end %>
+  </p>
+<% end %>

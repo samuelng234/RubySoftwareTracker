@@ -1,0 +1,24 @@
+<h1>Tools To Add</h1>
+<div class="tool-list">
+    <% @unassigned_tools.each do |tool| %>
+      <div class="tool-list_container">
+        <div class="tool-list_container_label"><%= tool.name %></div>
+        <%= button_to user_user_tools_path(tool_id: tool.id), class: "btn add-icon" do %>
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+
+<h1>Tools To Delete</h1>
+<div class="tool-list">
+    <% @assigned_tools.each do |user_tool| %>
+      <div class="tool-list_container">
+        <div class="tool-list_container_label"><%= user_tool.tool.name %></div>
+        <%= button_to user_user_tool_path(id: user_tool.id), :method => :delete, class: "btn minus-icon" do %>
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+<%= link_to "Back", user_path(id: params[:user_id]) %>

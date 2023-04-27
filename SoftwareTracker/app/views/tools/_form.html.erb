@@ -1,0 +1,14 @@
+<%= form_with model: tool do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% tool.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <%= form.collection_select :category_id, @categories, :id, :name, :include_blank => true %>
+  </div>
+  <p>
+    <%= form.submit %>
+    <%= button_to "Cancel", tool_path(id: tool.id) %>
+  </p>
+<% end %>
