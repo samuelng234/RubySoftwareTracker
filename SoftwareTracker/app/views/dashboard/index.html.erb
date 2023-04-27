@@ -1,0 +1,10 @@
+<h1>Dashboard</h1>
+<h2>Top 10 used software tools</h2>
+<ul>
+  <% @user_tools.each do |user_tool| %>
+    <li>
+      <%= user_tool.tool.name %>
+    </li>
+  <% end %>
+</ul>
+

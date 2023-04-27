@@ -1,0 +1,26 @@
+<h1>Tools</h1>
+<%= link_to "New Tool", new_tool_path %>
+
+<%= form_with url: tools_path, method: :get do |form| %>
+  <%= form.text_field :search_text, value: params[:search_text], placeholder: 'Enter search term...' %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% unless @tools.nil? %>
+  <% @tools.group_by { |tool| tool.category_id }.values.each do |tool_category| %>
+    <h3>
+      <% if tool_category[0].category.nil? %>
+        Uncategorized
+      <% else %>
+        <%= tool_category[0].category.name %>
+      <% end %>
+    </h3>
+    <ul>
+      <% tool_category.each do |tool| %>
+      <li>
+        <%= link_to tool.name, tool %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
